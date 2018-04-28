@@ -45,6 +45,7 @@ class RpcClient(object):
                                    body=str(n))
         while self.response is None:
             self.connection.process_data_events(0)  # return asap
+        return self.response
 
     def close(self):
         self.connection.close()
@@ -52,6 +53,6 @@ class RpcClient(object):
 
 fib_rpc = RpcClient(mq_config('arch-linux4', 'dao', 'dao', 'rpc-queue'))
 
-for i in range(1, 7):
+for i in range(1, 10):
     response = fib_rpc(i)
-    print('{}==>{}'.format(i, response))
+    print('{}==>{}'.format(i, int(response)))
