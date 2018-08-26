@@ -5,7 +5,7 @@ import sys
 # add the relative path ../src to the search path
 if os.path.dirname(__file__):
     cfd = os.path.dirname(__file__)
-sys.path.append('/'.join((cfd, '../src')))
+sys.path.append(os.path.join(cfd, '..', 'src'))
 #pylint: disable=E0401
 from fib_func import fib
 

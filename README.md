@@ -7,7 +7,7 @@ This is a python project demonstrating
 
 ### Pre-condition
 
-1. RabbitMQ, or other MQ, and has AMQP feature enabled; port 5672 is reserved for AMQP, and Firewall is not opened for the port
+1. RabbitMQ, or other MQ, and has AMQP feature enabled; port 5672 is reserved for AMQP, and Firewall is opened for the port
 2. _pika_ module is installed
 
 ### Files
@@ -24,11 +24,13 @@ This is a python project demonstrating
 
 | Script | Description |
 | ------ | ------ |
-| amqp-connect.py | methods of connecting to MQ and creating a channel, as well as a _RPC_ server method |
-| amqp-receiver.py | subscribe a queue and wait for consuming messages sent from _amqp-sender.py_ |
+| my_config.py | reading configuration from a property file. |
+| my_logging.py | logging utility.|
+| amqp-connect.py | methods of connecting to MQ and creating a channel, as well as a _RPC_ methods. |
+| amqp-receiver.py | subscribe a queue and wait for consuming messages sent from _amqp-sender.py_.  |
 | amqp-sender.py | send a message to default exchange with routing key set as the queue name (so that AMQP will forward the message to the queue) |
-| fib_func.py | Fibonacci function calculation; it uses python's generator pattern |
-| fib_service.py | receives the message from a predefined queue, calculates the Fibonacci number, and then publish the answer to the queue, which is defined in the caller's property |
+| fib_func.py | Fibonacci function calculation. |
+| fib_service.py | receives the message from a predefined queue, calculates the Fibonacci number, and then publish the answer to the queue defined in the caller's property |
 | fib_client.py | create an exclusive queue for receiving answer from the server, publish a request with the information of the exclusive queue in the property, and then wait until receiving message from the exclusive queue. |
 
 

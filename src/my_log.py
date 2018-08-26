@@ -3,15 +3,15 @@ import logging.config
 import os
 import json
 
-"""
-    This uses json file to configuring logging. 
-    The class method, setup_logging, can be either called manually, 
-    or it can be called automatically via the class method, get_logger.
-    (1) environment variable, LOG_CFG, if it is defined;
-    (2) manually specified path,
-    (3) ../data/logging.json
-"""
 class MyLogging(object):
+    """
+        This uses json file to configuring logging. 
+        The class method, setup_logging, can be either called manually, 
+        or it can be called automatically via the class method, get_logger.
+        (1) environment variable, LOG_CFG, if it is defined;
+        (2) manually specified path,
+        (3) ../data/logging.json
+    """
     loggers = {}
     configured = False
     @staticmethod
@@ -37,7 +37,7 @@ class MyLogging(object):
             path = value
         elif path == None:
             dir = os.path.dirname(os.path.realpath(__file__))
-            path = dir + '/../data/logging.json'
+            path = os.path.join(dir, '..', 'data', 'logging.json')
         if os.path.exists(path):
             print('{} is used for logging config'.format(path))
             with open(path, 'r') as f:

@@ -37,7 +37,7 @@
     },
 
     "loggers": {
-        "my_log": {
+        "amqp_connect": {
             "level": "DEBUG",
             "handlers": ["console"],
             "propagate": false
